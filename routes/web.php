@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ArtController;
+use \App\Http\Controllers\InstructorController;
+use \App\Http\Controllers\SchoolController;
+use \App\Http\Controllers\RequestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,13 +17,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', )->name('/');
+Route::get('/', function () {
+    return view('welcome');
+})->name('/');
 
-//Route::get('/arts')->name('arts');
-//
-//Route::get('/schools')->name('schools');
-//
-//Route::get('/instructors')->name('instructors');
-//
-//Route::match(['get', 'post'], '/request')->name('request');
+Route::name('arts.')->group(function () {
+    Route::get('/arts', [ArtController::class, 'index'])->name('index');
+});
+
+Route::name('schools.')->group(function () {
+    Route::get('/schools', [SchoolController::class, 'index'])->name('index');
+});
+
+Route::name('instructors.')->group(function () {
+    Route::get('/instructors', [InstructorController::class, 'index'])->name('index');
+
+//    Route::get('/instructors/update', [InstructorController::class, 'index'])->name('update');
+});
+
+Route::name('request')->group(function () {
+    Route::match(['get', 'post'], '/request', [RequestController::class, 'request']);
+});
+
 
