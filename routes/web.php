@@ -31,8 +31,6 @@ Route::name('schools.')->group(function () {
 
 Route::name('instructors.')->group(function () {
     Route::get('/instructors', [InstructorController::class, 'index'])->name('index');
-
-//    Route::get('/instructors/update', [InstructorController::class, 'index'])->name('update');
 });
 
 Route::name('request')->group(function () {
