@@ -28,7 +28,7 @@ class RequestController extends Controller
     private function sendRequest(Request $request)
     {
 
-        $this->client->request('POST', '/api/V1/requests', [
+        $this->client->request('POST', config('api_url.CRM.uri').'/requests', [
             'json' => [
                 'name' => $request->post('name'),
                 'surname' => $request->post('surname'),

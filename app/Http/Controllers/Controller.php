@@ -15,6 +15,6 @@ class Controller extends BaseController
 
     public function __construct()
     {
-        $this->client = new Client(['base_uri' => 'http://127.0.0.1:8000']);
+        $this->client = new Client(['base_uri' => config('api_url.CRM.base_uri')]);
     }
 }
